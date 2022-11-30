@@ -1,15 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import User from './user'
-// import Toast from './toast'
-import Carousel from "./carousel";
+import Post from "./post";
 
 const FrontPage = () => {
     return (
         <Fragment>
-            {/* <Toast></Toast> */}
+            <Post></Post>
             <Container>
-                <Carousel></Carousel>
                 <div className="space"></div>
                 <User></User>
             </Container>

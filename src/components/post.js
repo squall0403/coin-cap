@@ -12,7 +12,7 @@ const User = () => {
         setIsLoading(true);
         async function getAssets() {
             try {
-                const response = await axios.get(`${apiURL}/users`)
+                const response = await axios.get(`${apiURL}/posts`)
                 setAssets(response.data);
                     setIsLoading(false)
             } catch (error) {
@@ -29,11 +29,9 @@ const User = () => {
         return assets.map((asset) => {
             return (
                 <tr key={asset.id}>
-                    <td>{asset.name}</td>
-                    <td>{asset.username}</td>
-                    <td>{asset.email}</td>
-                    <td>{asset.phone}</td>
-                    <td>{asset.company.name}</td>
+                    <td>{asset.id}</td>
+                    <td>{asset.title}</td>
+                    <td>{asset.body}</td>
                 </tr>
             )
         })
@@ -44,11 +42,9 @@ const User = () => {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Phone</th>
-                            <th>Company</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Body</th>
                         </tr>
                     </thead>
                     <tbody>
