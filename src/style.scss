@@ -35,4 +35,13 @@ body {
             text-align: center;
         }
     }
+
+    .btn-menu{
+        position: absolute;
+        display: block;
+        right: 0%;
+        top: 10px;
+        cursor: pointer;
+        font-size: 45px;
+    }
 }

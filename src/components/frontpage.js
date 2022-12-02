@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment} from "react";
 import Container from 'react-bootstrap/Container';
+import CusNavbar from "./navbar";
 import User from './user'
-import Post from "./post";
 
 const FrontPage = () => {
     return (
         <Fragment>
-            <Post></Post>
             <Container>
+                <CusNavbar></CusNavbar>
                 <div className="space"></div>
                 <User></User>
             </Container>
