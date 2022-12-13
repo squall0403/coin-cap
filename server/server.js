@@ -1,10 +1,11 @@
 var http = require('http');
+const db = require('./db/db.js');
+db.get_course();
 
 http.createServer(function (req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.end('Hello World!');
+
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end();
+
 }).listen(8080);
-
-const db = require('./db/db');
-
-db.create_course_db();
