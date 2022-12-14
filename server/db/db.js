@@ -27,4 +27,30 @@ const get_all_courses = async (sql) => {
         })
     })
 }
-module.exports = { get_all_courses }
+
+const get_course = async (sql, params) => {
+    return new Promise((resolve, reject) => {
+        db.serialize(() => {
+            db.get(sql, params, (err, rows) => {
+                if (err) {
+                    reject(err)
+                }
+                resolve(rows)
+            })
+        })
+    })
+}
+
+const delete_course = async (sql, params) => {
+    return new Promise((resolve, reject) => {
+        db.serialize(() => {
+            db.run(sql, params, (err, results) => {
+                if (err) {
+                    reject(err)
+                }
+                resolve(results)
+            })
+        })
+    })
+}
+module.exports = { get_all_courses, get_course, delete_course }
