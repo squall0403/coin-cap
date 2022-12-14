@@ -4,4 +4,21 @@ $main-font: 'Roboto';
 
 body #root {
     font-family: $main-font;
+    .card{
+        .card-body{
+            .card-title{
+                height: 50px;
+            }
+            .card-text{
+                .card-flex{
+                    column-gap: 10px;
+                    display: flex;
+                    margin-bottom: 10px;
+                }
+            }
+            .card-link{
+                float: right;
+            }
+        }
+    }
 }
