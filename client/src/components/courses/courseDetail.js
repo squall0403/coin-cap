@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { apiURL } from '../ultis/constants'
+import { apiURL, contentURL } from '../ultis/constants'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,8 +15,8 @@ const CourseDetail = () => {
     const getCourseById = async () => {
       try {
         const id = params.id.toString();
-        const response = await axios.get(`${apiURL}/course?id=${id}`)
-        setCourse(response.data[0])
+        const response = await axios.get(`${apiURL}/course/view/${id}`)
+        setCourse(response.data)
         return;
       } catch (error) {
         console.log(error);
@@ -36,7 +36,7 @@ const CourseDetail = () => {
         </Row>
         <div style={{ width: 660, height: 'auto' }}>
           <Ratio aspectRatio="16x9">
-            <iframe width="560" height="315" src={course.course_content_url} title={course.course_name}></iframe>
+            <iframe width="560" height="315" src={contentURL + course.course_content_url} title={course.course_name}></iframe>
           </Ratio>
         </div>
       </Container>
