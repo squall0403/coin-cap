@@ -7,7 +7,7 @@ const CourseApp = () => {
     return (
         <Routes>
             <Route exact path="/" element={<CourseList />} />
-            <Route exact path="/:id" element={<CourseDetail />} />
+            <Route exact path="/view/:id" element={<CourseDetail />} />
         </Routes>
   )
 }

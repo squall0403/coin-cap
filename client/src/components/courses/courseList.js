@@ -12,7 +12,7 @@ const CourseList = () => {
   useEffect(() => {
     const getCourses = async () => {
       try {
-        const response = await axios.get(`${apiURL}/courses`)
+        const response = await axios.get(`${apiURL}/course`)
         setCourses(response.data);
         return;
       } catch (error) {
@@ -41,7 +41,7 @@ const CourseList = () => {
                   </span>{course.course_level}
                 </span>
               </Card.Text>
-              <Card.Link href={`/course/${course.course_id}`}>Go to course</Card.Link>
+              <Card.Link href={`/course/view/${course.course_id}`}>Go to course</Card.Link>
             </Card.Body>
           </Card>
         </Col>
