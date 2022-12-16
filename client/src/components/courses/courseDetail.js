@@ -6,6 +6,35 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Ratio from 'react-bootstrap/Ratio';
+import Image from 'react-bootstrap/Image'
+
+const ContentDetail = () => {
+  const [contents, setContent] = useState([]);
+  const params = useParams();
+
+  useEffect(() => {
+    const getContentByCourseId = async () => {
+      try {
+        const id = params.id.toString();
+        const response = await axios.get(`${apiURL}/content/view/course/${id}`)
+        setContent(response.data)
+        return;
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+    getContentByCourseId();
+  }, [params.id])
+  return contents.map((content) => {
+    return (
+      <Fragment>
+        <p>{content.content_body}</p>
+      </Fragment>
+    )
+  }
+  )
+}
 
 const CourseDetail = () => {
   const [course, setCourse] = useState([]);
@@ -29,18 +58,30 @@ const CourseDetail = () => {
     <Fragment>
       <Container>
         <Row>
-          <Col>{course.course_name}</Col>
-          <Col>{course.course_category}</Col>
-          <Col>{course.course_level}</Col>
-          <Col>{course.course_description}</Col>
+          <Col>
+            <h1>{course.course_name}</h1>
+            <p>Category: {course.course_category}</p>
+            <p>Level: {course.course_level}</p>
+          </Col>
+          <Col>
+            <p>{course.course_description}</p>
+          </Col>
         </Row>
-        <div style={{ width: 660, height: 'auto' }}>
-          <Ratio aspectRatio="16x9">
-            <iframe width="560" height="315" src={contentURL + course.course_content_url} title={course.course_name}></iframe>
-          </Ratio>
-        </div>
+        <Row>
+          <Col>
+            <div style={{ width: '100%', height: 'auto' }} className='Scorm_iframe'>
+              <Ratio aspectRatio="16x9">
+                <iframe src={contentURL + course.course_content_url} title={course.course_name}></iframe>
+              </Ratio>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <ContentDetail></ContentDetail>
+        </Row>
+
       </Container>
-    </Fragment>
+    </Fragment >
   )
 }
 

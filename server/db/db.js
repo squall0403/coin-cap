@@ -14,8 +14,8 @@ let db = new sqlite3.Database(db_source, (err) => {
     }
 });
 
-
-const get_all_courses = async (sql) => {
+// COURSE
+const get_all = async (sql) => {
     return new Promise((resolve, reject) => {
         db.serialize(() => {
             db.all(sql, (err, rows) => {
@@ -28,7 +28,7 @@ const get_all_courses = async (sql) => {
     })
 }
 
-const get_course = async (sql, params) => {
+const get_single = async (sql, params) => {
     return new Promise((resolve, reject) => {
         db.serialize(() => {
             db.get(sql, params, (err, rows) => {
@@ -41,7 +41,7 @@ const get_course = async (sql, params) => {
     })
 }
 
-const delete_course = async (sql, params) => {
+const delete_single = async (sql, params) => {
     return new Promise((resolve, reject) => {
         db.serialize(() => {
             db.run(sql, params, (err, results) => {
@@ -53,4 +53,17 @@ const delete_course = async (sql, params) => {
         })
     })
 }
-module.exports = { get_all_courses, get_course, delete_course }
+
+const get_content_by_course = async (sql, params) => {
+    return new Promise((resolve, reject) => {
+        db.serialize(() => {
+            db.all(sql, params, (err, rows) => {
+                if (err) {
+                    reject(err)
+                }
+                resolve(rows)
+            })
+        })
+    })
+}
+module.exports = { get_all, get_single, delete_single, get_content_by_course}

@@ -1,24 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 $main-font: 'Roboto';
+$primary-color: #009dff;
+$cyan: #0dcaf0;
+$box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
 
 body #root {
     font-family: $main-font;
-    .card{
-        .card-body{
-            .card-title{
+
+    .card {
+        border-radius: 0px;
+        border: none;
+        box-shadow: $box-shadow;
+
+        .card-img,
+        .card-img-top {
+            border-radius: 0px;
+            border-bottom: 4px solid $cyan;
+        }
+
+        .card-body {
+            .card-title {
                 height: 50px;
             }
-            .card-text{
-                .card-flex{
+
+            .card-text {
+                .card-flex {
                     column-gap: 10px;
                     display: flex;
                     margin-bottom: 10px;
                 }
             }
-            .card-link{
+
+            .card-link {
                 float: right;
             }
         }
     }
+
+    .container {
+        padding-top: 10px;
+
+        .row {
+            .col {
+                .Scorm_iframe {}
+            }
+        }
+    }
+
+    .space {
+        display: block;
+        height: 50px;
+    }
+
 }
