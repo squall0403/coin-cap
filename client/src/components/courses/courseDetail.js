@@ -6,7 +6,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Ratio from 'react-bootstrap/Ratio';
-import Image from 'react-bootstrap/Image'
+import Badge from 'react-bootstrap/Badge';
+import uuid from 'react-uuid';
 
 const ContentDetail = () => {
   const [contents, setContent] = useState([]);
@@ -26,9 +27,19 @@ const ContentDetail = () => {
     }
     getContentByCourseId();
   }, [params.id])
+
   return contents.map((content) => {
+    let tags = content.content_tag.split(',')
     return (
-      <Fragment>
+      <Fragment key={uuid()}>
+        <span>{tags.map((tag) => {
+          return (
+            <Badge bg="info" key={uuid()}>
+              {tag}
+            </Badge>
+          )
+        })}</span>
+
         <p>{content.content_body}</p>
       </Fragment>
     )
@@ -79,7 +90,6 @@ const CourseDetail = () => {
         <Row>
           <ContentDetail></ContentDetail>
         </Row>
-
       </Container>
     </Fragment >
   )

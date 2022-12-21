@@ -52,5 +52,9 @@ body #root {
         display: block;
         height: 50px;
     }
-
+    .badge {
+        margin-right: 5px;
+        text-transform: capitalize;
+        border-radius: 3px;
+    }
 }
