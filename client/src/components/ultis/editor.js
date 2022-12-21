@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import Container from 'react-bootstrap/esm/Container';
+import { apiURL } from './constants';
 
 const editorConfiguration = {
     toolbar: {
@@ -51,6 +52,9 @@ const editorConfiguration = {
             'tableRow',
             'mergeTableCells'
         ]
+    },
+    simpleUpload: {
+        uploadUrl: `${apiURL}/uploadfile`
     }
 };
 
