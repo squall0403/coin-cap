@@ -9,6 +9,7 @@ import Ratio from 'react-bootstrap/Ratio';
 import uuid from 'react-uuid';
 import SideBar from '../ultis/sidebar';
 import Space from '../ultis/space';
+import parse from 'html-react-parser';
 
 const ContentDetail = () => {
   const [contents, setContent] = useState([]);
@@ -81,7 +82,7 @@ const CourseDetail = () => {
           <Col>
             <div style={{ width: '100%', height: 'auto' }} className='Scorm_iframe'>
               <Ratio aspectRatio="16x9">
-                <iframe src={contentURL + course.course_content_url} title={course.course_name}></iframe>
+                <embed src={contentURL + course.course_content_url} title={course.course_name}></embed>
               </Ratio>
             </div>
           </Col>

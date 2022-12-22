@@ -77,7 +77,10 @@ body #root {
 
         .Scorm_iframe {
             .ratio.ratio-16x9 {
-                height: 670px;
+                // height: 100vh;
+                embed{
+                    // height: 110vh;
+                }
             }
         }
     }
@@ -93,12 +96,11 @@ body #root {
         top: 150px;
         position: fixed;
         width: 270px;
-        background: $cyan;
+        border:1px solid $cyan;
         padding: 20px;
 
         .related_links.container {
             h4 {
-                color: #ffffff;
                 margin-bottom: 20px;
                 font-weight: 600;
             }
@@ -106,12 +108,11 @@ body #root {
             .list-group {
                 .list-group-item {
                     padding-left: 0px;
-                    border-color: $light-grey;
-
+                    border-color: $cyan;
                     a {
+                        color: $primary-color;
                         font-weight: 400;
                         text-decoration: none;
-                        color: #ffffff;
                         @extend .transition;
                     }
 
