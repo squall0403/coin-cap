@@ -1,11 +1,12 @@
-import React from 'react'
-/* import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import axios from 'axios'; */
-
+import React, { Fragment } from 'react'
+import NavBar from './ultis/navbar'
+import Footer from './ultis/footer'
 const FrontPage = () => {
   return (
-    <div>FrontPage</div>
+    <Fragment>
+      <NavBar></NavBar>
+      <Footer></Footer>
+    </Fragment>
   )
 }
 

@@ -6,8 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Ratio from 'react-bootstrap/Ratio';
-import Badge from 'react-bootstrap/Badge';
 import uuid from 'react-uuid';
+import SideBar from '../ultis/sidebar';
+import Space from '../ultis/space';
 
 const ContentDetail = () => {
   const [contents, setContent] = useState([]);
@@ -29,17 +30,16 @@ const ContentDetail = () => {
   }, [params.id])
 
   return contents.map((content) => {
-    let tags = content.content_tag.split(',')
+    // let tags = content.content_tag.split(',')
     return (
       <Fragment key={uuid()}>
-        <span>{tags.map((tag) => {
+        {/*         <span>{tags.map((tag) => {
           return (
             <Badge bg="info" key={uuid()}>
               {tag}
             </Badge>
           )
-        })}</span>
-
+        })}</span> */}
         <p>{content.content_body}</p>
       </Fragment>
     )
@@ -67,17 +67,16 @@ const CourseDetail = () => {
   }, [params.id])
   return (
     <Fragment>
-      <Container>
+      <Container className='course_detail'>
         <Row>
-          <Col>
-            <h1>{course.course_name}</h1>
-            <p>Category: {course.course_category}</p>
-            <p>Level: {course.course_level}</p>
-          </Col>
-          <Col>
-            <p>{course.course_description}</p>
-          </Col>
+          <h1>{course.course_name}</h1>
+          <p>Category: {course.course_category}</p>
+          <p>Level: {course.course_level}</p>
+          <hr></hr>
+          <p>Description</p>
+          <p>{course.course_description}</p>
         </Row>
+        <Space></Space>
         <Row>
           <Col>
             <div style={{ width: '100%', height: 'auto' }} className='Scorm_iframe'>
@@ -87,10 +86,14 @@ const CourseDetail = () => {
             </div>
           </Col>
         </Row>
+        <Space></Space>
         <Row>
           <ContentDetail></ContentDetail>
         </Row>
       </Container>
+      <div className='side_bar_right'>
+        <SideBar></SideBar>
+      </div>
     </Fragment >
   )
 }
