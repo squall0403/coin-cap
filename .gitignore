@@ -25,3 +25,4 @@ yarn-error.log*
 server/db/database.sqlite3
 server/node_modules
 storage
+client/ckeditor5/sample
