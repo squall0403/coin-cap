@@ -25,19 +25,19 @@ app.controller("instParamsCtrl", ($scope, $http) => {
     $scope.instParams =
     {
         "admin": {
-            "email": "wembley@tixngo.io",
-            "password": "uSfc6-d5rWt-QvUGN-xC3Rh-Wfny7"
+            "email": "",
+            "password": ""
         },
         "organizer": {
-            "webrooturl": "www.wembleystadium.com",
-            "companyName": "Wembley Stadium",
-            "email": "wembley@tixngo.io",
-            "phone": "+4412345678910",
+            "webrooturl": "",
+            "companyName": "",
+            "email": "",
+            "phone": "",
             "address": {
-                "city": "London",
-                "countryCode": "GB",
-                "site": "London",
-                "zip": "04177"
+                "city": "",
+                "countryCode": "",
+                "site": "",
+                "zip": ""
             }
         }
     }
