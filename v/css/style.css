@@ -1,0 +1,12 @@
+.envParams {
+  overflow-wrap: anywhere;
+}
+.envParams .content {
+  padding-left: 2rem;
+}
+.envParams .content .propKey {
+  font-weight: bold;
+  color: blue;
+}
+
+/*# sourceMappingURL=style.css.map */

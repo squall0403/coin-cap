@@ -9,7 +9,6 @@ import Ratio from 'react-bootstrap/Ratio';
 import uuid from 'react-uuid';
 import SideBar from '../ultis/sidebar';
 import Space from '../ultis/space';
-import parse from 'html-react-parser';
 
 const ContentDetail = () => {
   const [contents, setContent] = useState([]);
@@ -31,16 +30,8 @@ const ContentDetail = () => {
   }, [params.id])
 
   return contents.map((content) => {
-    // let tags = content.content_tag.split(',')
     return (
       <Fragment key={uuid()}>
-        {/*         <span>{tags.map((tag) => {
-          return (
-            <Badge bg="info" key={uuid()}>
-              {tag}
-            </Badge>
-          )
-        })}</span> */}
         <p>{content.content_body}</p>
       </Fragment>
     )
