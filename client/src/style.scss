@@ -19,6 +19,10 @@ $box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
     background-image: linear-gradient(to right, $teal, $cyan) !important;
 }
 
+.spacer{
+    display: block;
+    height: 30px;
+}
 body #root {
     font-family: $main-font;
 

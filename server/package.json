@@ -1,4 +1,9 @@
 {
+  "name": "we-cms",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Duy Nguyen",
+  "license":"MIT",
   "scripts": {
     "start": "node server.js",
     "test": "echo 'Error: no test specified' && exit 1",
