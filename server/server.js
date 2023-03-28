@@ -1,12 +1,15 @@
 const express = require('express')
 const cors = require("cors");
 const serveStatic = require('serve-static')
-const bodyParser= require('body-parser')
+const bodyParser = require('body-parser')
 const multer = require('multer');
 
 const app = express()
 const port = 8080
 const dbo = require("./db/db");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(cors());
 // define storage default URL
@@ -99,6 +102,44 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
 })
 
 // END FILE UPLOAD
+
+// BILL UPDATE
+app.get("/bill", (req, res, next) => {
+  var sql = "SELECT * FROM bills"
+  dbo.get_all(sql).then((results) => {
+    res.json(results)
+  });
+});
+
+app.get("/bill/view/:id", (req, res, next) => {
+  var sql = "SELECT * FROM bills WHERE bill_id = ?"
+  var params = [req.params.id]
+  dbo.get_single(sql, params).then((results) => {
+    res.json(results)
+  });
+});
+
+app.post("/bill", (req, res, next) => {
+  var errors = []
+  if (!req.body.url) {
+    errors.push("No URL specified");
+  }
+  if (errors.length) {
+    res.status(400).json({ "error": errors.join(",") });
+    return;
+  }
+  var data = {
+    url: req.body.url
+  }
+  var params = [data.url]
+  var sql = 'INSERT INTO bills (bill_url, bill_status) VALUES (?,"Not printed")'
+
+  dbo.post_bill(sql, params).then((results) => {
+    res.json(results)
+  });
+})
+
+// END BILL UPDATE
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

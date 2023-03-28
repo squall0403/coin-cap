@@ -66,4 +66,28 @@ const get_content_by_course = async (sql, params) => {
         })
     })
 }
-module.exports = { get_all, get_single, delete_single, get_content_by_course}
+
+const post_bill = async (sql, params) => {
+    /*  db.run(sql, params, function (err, result) {
+         if (err) {
+             res.status(400).json({ "error": err.message })
+             return;
+         }
+         res.json({
+             "message": "success",
+             "data": data,
+             "id": this.lastID
+         })
+     }); */
+    return new Promise((resolve, reject) => {
+        db.serialize(() => {
+            db.all(sql, params, (err, rows) => {
+                if (err) {
+                    reject(err)
+                }
+                resolve(rows)
+            })
+        })
+    })
+}
+module.exports = { get_all, get_single, delete_single, get_content_by_course, post_bill }
